@@ -8,6 +8,7 @@
     [:security :anti-forgery] false))
 
 (defroutes app-routes
+  (POST "/" [name] (str "Hello " name))
   (GET "/" [] "Hello World")
   (route/not-found "Not Found"))
 
