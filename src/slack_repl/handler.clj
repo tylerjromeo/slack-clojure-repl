@@ -15,9 +15,11 @@
     (subs message message-index)))
 
 (defn wrap-slack-message
-  "wrap a slack message in json that will casue it to post publicly in the channel" ; TODO use a real json library for this
+  "wrap a slack message in a json response that will casue it to post publicly in the channel" ; TODO use a real json library for this
   [string]
-  (str "{\"response_type\": \"in_channel\", \"text\": \"" string "\"}"))
+  {:status 200
+    :headers {"Content-Type" "application/json"}
+    :body (str "{\"response_type\": \"in_channel\", \"text\": \"" string "\"}")})
 
 (defn run-command
   "Evaluates a string representation of a clojure form. Returns the result or a sensible error messagesite-defaults"
